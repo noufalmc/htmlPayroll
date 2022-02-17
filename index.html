@@ -43,15 +43,15 @@
                 <label for="name">
                     Profile Pic:
                 </label>
-                <label style="display: flex;">
-                <input type="radio" name="profile" class="radio">
-                <img src="/__MACOSX/assets/profile-images/._Ellipse 1.png">
-                <input type="radio" name="profile" class="radio"> 
-                <img src="/payroll/assets/profile-images/Ellipse -3.png">
-                <input type="radio" name="profile" class="radio"> 
-                <img src="/payroll/assets/profile-images/Ellipse -8.png">
-                <input type="radio" name="profile" class="radio">
-                <img src="/payroll/assets/profile-images/Ellipse -9.png">
+                <label style="display: flex;" class="photo">
+                    <input type="radio" name="profile" class="radio">
+                    <img src="/__MACOSX/assets/profile-images/._Ellipse 1.png">
+                    <input type="radio" name="profile" class="radio">
+                    <img src="/payroll/assets/profile-images/Ellipse -3.png">
+                    <input type="radio" name="profile" class="radio">
+                    <img src="/payroll/assets/profile-images/Ellipse -8.png">
+                    <input type="radio" name="profile" class="radio">
+                    <img src="/payroll/assets/profile-images/Ellipse -9.png">
                 </label>
             </div>
             <div class="form-content">
@@ -59,10 +59,10 @@
                     Gender:
                 </label>
                 <label>
-                <input type="radio" name="gender">
-                Male
-                <input type="radio" name="gender">
-                Female
+                    <input type="radio" name="gender">
+                    Male
+                    <input type="radio" name="gender">
+                    Female
                 </label>
             </div>
             <div class="form-content">
@@ -70,11 +70,11 @@
                     Department:
                 </label>
                 <label>
-                <input type="checkbox" value="hr" id="department">HR
-                <input type="checkbox" value="sales" id="department">Sales
-                <input type="checkbox" value="finance" id="department">Finance
-                <input type="checkbox" value="engineers" id="department">Engineers
-                <input type="checkbox" value="other" id="department">Others
+                    <input type="checkbox" value="hr" id="department">HR
+                    <input type="checkbox" value="sales" id="department">Sales
+                    <input type="checkbox" value="finance" id="department">Finance
+                    <input type="checkbox" value="engineers" id="department">Engineers
+                    <input type="checkbox" value="other" id="department">Others
                 </label>
             </div>
             <div class="form-content">
@@ -90,16 +90,31 @@
                     Start Date
                 </label>
                 <label>
-                <select>
-                    <option>Day</option>
-                </select>
-                <select>
-                    <option>Month</option>
-                </select>
-                <select>
-                    <option>Year</option>
-                </select>
+                    <select>
+                        <option>Day</option>
+                    </select>
+                    <select>
+                        <option>Month</option>
+                    </select>
+                    <select>
+                        <option>Year</option>
+                    </select>
                 </label>
+            </div>
+            <div class="form-content">
+                <label for="salary">
+                    Notes:
+                </label>
+                <textarea style="height:100px;width:60%;">
+
+                </textarea>
+            </div>
+            <div class="button-parent">
+                <a href="cancle.html" class="button cancelbtn">Cancel</a>
+            <div class="submit-reset">
+                <button type="submit" class="button submitbtn">Submit</button>
+                <button type="reset" class="button restbtn">Reset</button>
+            </div>
             </div>
         </form>
     </div>
