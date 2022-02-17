@@ -82,7 +82,8 @@
                     Salary:
                 </label>
                 <label>
-                    <input name="salary" value="300000" value="400000" max="500000" type="range" step="100" id="salary">
+                    <input name="salary" id="salary" value="300000" value="400000" max="500000" type="range" step="100" id="salary">
+                    <salary class="salary">400000</salary>
                 </label>
             </div>
             <div class="form-content">
@@ -118,7 +119,13 @@
             </div>
         </form>
     </div>
-    
+    <script type="text/javascript">
+        const salary=document.querySelector("#salary");
+        const range=document.querySelector(".salary");
+        salary.addEventListener('input',function(){
+            range.innerText=salary.value;
+        }) 
+    </script>
 </body>
 
 </html>
