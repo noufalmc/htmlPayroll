@@ -126,6 +126,7 @@ body {
     background-color:#d3cdcd;
     border: 1px solid #d3cdcd;
     cursor:pointer;
+    border-radius: 9px;
     
 }
 .submit-reset
