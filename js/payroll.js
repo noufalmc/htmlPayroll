@@ -7,19 +7,7 @@
  {
      
      
-     //Contructor
-     constructor(id,name,salary,gender,startDate,department,gender,employeeNotes,profilePic)
-     {
-       this.id = id;
-       this.name = name
-       this.salary = salary; 
-       this.gender = gender; 
-       this.startDate = startDate;
-       this._gender=gender;
-       this._department=department;
-       this._employeeNotes=employeeNotes;
-       this._profilepic=profilePic;
-     }
+     
      //getter
      get name()
      {
@@ -28,7 +16,7 @@
      //setter
      set name(name)
      {
-         let nameRegex=RegExp('^[A-Z]{1}[a-z]{3,}$')
+         let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$')
        if(nameRegex.test(name))
            this._name = name;
        else
@@ -78,14 +66,6 @@
      {
          return this._startDate;
      }
-     set gender(gender)
-     {
-         this._gender=gender;
-     }
-     get gender()
-     {
-         return this._gender;
-     }
      set department(department)
      {
          this._department=department;
@@ -116,7 +96,8 @@
          const startEmpDate = this.startDate === undefined ? "undefined" :
                 this.startDate.toLocaleDateString("en-US",options);
          return "\n Id => "+this.id+" Name =>"+this.name+
-         " Salary =>"+this.salary+" Gender => "+this.gender+" Start date =>"+startEmpDate;
+         " Salary =>"+this.salary+" Gender => "+this.gender+" Start date =>"+startEmpDate+
+         "Department =>"+this._department+"Employee Notes =>"+this._employeeNotes+"Profile Pic =>"+this._profilepic;
      }
  }
  

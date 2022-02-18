@@ -133,7 +133,13 @@ body {
 {
     width:60%;
 }
-
+.error-output
+{
+    color: red;
+    font: optional;
+    font-size: 12px;
+    margin-left: 10px;
+}
 
 
 @media only screen and (max-width:960px)
