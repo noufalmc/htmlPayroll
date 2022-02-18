@@ -168,8 +168,34 @@
 </body>
 
 </html>
+
 <script>
-    
+     window.addEventListener('DOMContentLoaded',(event)=>{
+         alert("hi");
+    const name=document.querySelector("#name");
+    const error=document.querySelector('.error-output');
+    name.addEventListener('input',function(){
+
+        if(name.value.length==0)
+        {
+            error.textContent='';
+            return;
+        }
+        try
+        {
+            new EmployeePayrollData().name=name.value;
+            error.textContent='';
+        }catch(e)
+        {
+            error.textContent=e;
+        }
+    })
+    const salary=document.querySelector("#salary");
+        const range=document.querySelector(".salary");
+        salary.addEventListener('input',function(){
+            range.innerText=salary.value;
+        }) 
+    })
 
     const save=()=>{
         try
@@ -197,7 +223,6 @@
          let date=getInputValue('#day')+' '+
          getInputValue('#month')+' '+getInputValue('#year');
          employeePayrollData.startDate=Date.parse(date);
-         alert(employeePayrollData.startDate);
          alert(employeePayrollData.toString());
         
      }catch(e)
