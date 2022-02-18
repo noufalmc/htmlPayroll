@@ -87,7 +87,7 @@
                 </label>
                 <label>
                     <input name="salary" id="salary" value="300000" value="400000" max="500000" type="range" step="100"
-                        id="salary">
+                        id="salary" style="width: 78%;">
                     <salary class="salary">400000</salary>
                     <salary id="salary-result"></salary>
                 </label>
@@ -228,7 +228,7 @@
         let employeePayrollData = new EmployeePayrollData();
         try {
             employeePayrollData.name = getInputValue('#name');
-            employeePayrollData.profilePic = getSelectedvalues('[name=profile]').pop();
+            employeePayrollData.profilePic = getSelectedvalues('[name=profile]');
             employeePayrollData.gender = getSelectedvalues('[name=gender]');
             employeePayrollData.department = getSelectedvalues('[id=department]');
             employeePayrollData.salary = getInputValue('#salary');
@@ -261,5 +261,27 @@
         })
         return selectedValues;
     }
-    
+    const resetForm=()=>
+    {
+        unsetvalue('#name','');
+        unsetGroupInput('[name=profile]');
+        unsetGroupInput('[name=gender]');
+        unsetGroupInput('[id=department]');
+        unsetvalue('#salary','');
+        unsetvalue('#notes','');
+        unsetvalue('#day','');
+        unsetvalue('#month','');
+        unsetvalue('#year','');
+    }
+    const unsetGroupInput=(value)=>
+    {
+        let items=document.querySelectorAll(value);
+        allItems.forEach(item=>{
+            item.checked=false
+        })
+    }
+    const unsetvalue=(id,value)=>
+    {
+        document.querySelector(id).value=value;
+    }
 </script>
