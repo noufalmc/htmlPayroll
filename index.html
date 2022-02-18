@@ -44,13 +44,17 @@
                     Profile Pic:
                 </label>
                 <label style="display: flex;" class="photo">
-                    <input type="radio" name="profile" class="radio" value="/__MACOSX/assets/profile-images/_Ellipse 1.png">
+                    <input type="radio" name="profile" class="radio"
+                        value="/__MACOSX/assets/profile-images/_Ellipse 1.png">
                     <img src="/__MACOSX/assets/profile-images/_Ellipse 1.png">
-                    <input type="radio" name="profile" class="radio" value="/payroll/assets/profile-images/Ellipse -3.png">
+                    <input type="radio" name="profile" class="radio"
+                        value="/payroll/assets/profile-images/Ellipse -3.png">
                     <img src="/payroll/assets/profile-images/Ellipse -3.png">
-                    <input type="radio" name="profile" class="radio" value="/payroll/assets/profile-images/Ellipse -8.png">
+                    <input type="radio" name="profile" class="radio"
+                        value="/payroll/assets/profile-images/Ellipse -8.png">
                     <img src="/payroll/assets/profile-images/Ellipse -8.png">
-                    <input type="radio" name="profile" class="radio" value="/payroll/assets/profile-images/Ellipse -9.png">
+                    <input type="radio" name="profile" class="radio"
+                        value="/payroll/assets/profile-images/Ellipse -9.png">
                     <img src="/payroll/assets/profile-images/Ellipse -9.png">
                 </label>
             </div>
@@ -82,7 +86,8 @@
                     Salary:
                 </label>
                 <label>
-                    <input name="salary" id="salary" value="300000" value="400000" max="500000" type="range" step="100" id="salary">
+                    <input name="salary" id="salary" value="300000" value="400000" max="500000" type="range" step="100"
+                        id="salary">
                     <salary class="salary">400000</salary>
                     <salary id="salary-result"></salary>
                 </label>
@@ -130,7 +135,7 @@
                         <option value="11">11</option>
                         <option value="12">12</option>
                     </select>
-                    <select name="year" id="year" >
+                    <select name="year" id="year">
                         <option>Year</option>
                         <option value="2010">2010</option>
                         <option value="2011">2011</option>
@@ -157,99 +162,87 @@
             </div>
             <div class="button-parent">
                 <a href="cancle.html" class="button cancelbtn">Cancel</a>
-            <div class="submit-reset">
-                <button type="submit" class="button submitbtn">Submit</button>
-                <button type="reset" class="button restbtn">Reset</button>
-            </div>
+                <div class="submit-reset">
+                    <button type="submit" class="button submitbtn">Submit</button>
+                    <button type="reset" class="button restbtn">Reset</button>
+                </div>
             </div>
         </form>
     </div>
-    
+
 </body>
 
 </html>
 
 <script>
-     window.addEventListener('DOMContentLoaded',(event)=>{
-         alert("hi");
-    const name=document.querySelector("#name");
-    const error=document.querySelector('.error-output');
-    name.addEventListener('input',function(){
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const name = document.querySelector("#name");
+        const error = document.querySelector('.error-output');
+        name.addEventListener('input', function () {
 
-        if(name.value.length==0)
-        {
-            error.textContent='';
-            return;
-        }
-        try
-        {
-            new EmployeePayrollData().name=name.value;
-            error.textContent='';
-        }catch(e)
-        {
-            error.textContent=e;
-        }
-    })
-    const salary=document.querySelector("#salary");
-        const range=document.querySelector(".salary");
-        salary.addEventListener('input',function(){
-            range.innerText=salary.value;
-        }) 
+            if (name.value.length == 0) {
+                error.textContent = '';
+                return;
+            }
+            try {
+                new EmployeePayrollData().name = name.value;
+                error.textContent = '';
+            } catch (e) {
+                error.textContent = e;
+            }
+        })
+        const salary = document.querySelector("#salary");
+        const range = document.querySelector(".salary");
+        salary.addEventListener('input', function () {
+            range.innerText = salary.value;
+        })
     })
 
-    const save=()=>{
-        try
-        {
-            let EmployeePayrollData=createEmployeePayroll();
-            
-        }catch(e)
-        {
+    const save = () => {
+        try {
+            let EmployeePayrollData = createEmployeePayroll();
+
+        } catch (e) {
             return
         }
     }
 
- const createEmployeePayroll=()=>
- {
+    const createEmployeePayroll = () => {
 
-     let employeePayrollData=new EmployeePayrollData();
-     try
-     {
-         employeePayrollData.name=getInputValue('#name');
-         employeePayrollData.profilePic=getSelectedvalues('[name=profile]').pop();
-         employeePayrollData.gender=getSelectedvalues('[name=gender]');
-         employeePayrollData.department=getSelectedvalues('[id=department]');
-         employeePayrollData.salary=getInputValue('#salary');
-         employeePayrollData.employeeNotes=getInputValue('#notes');
-         let date=getInputValue('#day')+' '+
-         getInputValue('#month')+' '+getInputValue('#year');
-         employeePayrollData.startDate=Date.parse(date);
-         alert(employeePayrollData.toString());
-        
-     }catch(e)
-     {
-        //alert(e);
-        throw e;
-     }
-    
- }
+        let employeePayrollData = new EmployeePayrollData();
+        try {
+            employeePayrollData.name = getInputValue('#name');
+            employeePayrollData.profilePic = getSelectedvalues('[name=profile]').pop();
+            employeePayrollData.gender = getSelectedvalues('[name=gender]');
+            employeePayrollData.department = getSelectedvalues('[id=department]');
+            employeePayrollData.salary = getInputValue('#salary');
+            employeePayrollData.employeeNotes = getInputValue('#notes');
+            let date = getInputValue('#day') + ' ' +
+                getInputValue('#month') + ' ' + getInputValue('#year');
+            employeePayrollData.startDate = Date.parse(date);
+            alert(employeePayrollData.toString());
 
-const getInputValue=(id)=>
-{
-    let value=document.querySelector(id).value;
-    return value;
-}
-const getSelectedvalues=(propertyValue)=>
-{
-    alert("inside");
-    let allItems=document.querySelectorAll(propertyValue);
-    let selectedValues=[];
-    allItems.forEach(item=>{
-        if(item.checked)
-        {
-            selectedValues.push(item.value);
+        } catch (e) {
+            //alert(e);
+            throw e;
         }
-       
-    })
-    return selectedValues;
-}
+
+    }
+
+    const getInputValue = (id) => {
+        let value = document.querySelector(id).value;
+        return value;
+    }
+    const getSelectedvalues = (propertyValue) => {
+        alert("inside");
+        let allItems = document.querySelectorAll(propertyValue);
+        let selectedValues = [];
+        allItems.forEach(item => {
+            if (item.checked) {
+                selectedValues.push(item.value);
+            }
+
+        })
+        return selectedValues;
+    }
 </script>
