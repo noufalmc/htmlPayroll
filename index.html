@@ -201,10 +201,26 @@
     const save = () => {
         try {
             let EmployeePayrollData = createEmployeePayroll();
-
+            createAndUpdateJson(EmployeePayrollData);
         } catch (e) {
-            return
+            return;
         }
+    }
+
+    function createAndUpdateJson(data)
+    {
+        let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayroll"));
+        if(employeePayrollList!=undefined)
+        {
+            employeePayrollList.push(data);
+        }
+        else
+        {
+            employeePayrollList=[data]
+        }
+        
+        localStorage.setItem("EmployeePayroll",JSON.stringify(employeePayrollList));
+        alert(localStorage.getItem("EmployeePayroll"));
     }
 
     const createEmployeePayroll = () => {
@@ -221,6 +237,7 @@
                 getInputValue('#month') + ' ' + getInputValue('#year');
             employeePayrollData.startDate = Date.parse(date);
             alert(employeePayrollData.toString());
+            return employeePayrollData;
 
         } catch (e) {
             //alert(e);
@@ -234,7 +251,6 @@
         return value;
     }
     const getSelectedvalues = (propertyValue) => {
-        alert("inside");
         let allItems = document.querySelectorAll(propertyValue);
         let selectedValues = [];
         allItems.forEach(item => {
@@ -245,4 +261,5 @@
         })
         return selectedValues;
     }
+    
 </script>
