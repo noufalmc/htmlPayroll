@@ -28,7 +28,7 @@
         </div>
     </header>
     <div class="form-section">
-        <form class="form">
+        <form class="form" action="#" onsubmit="save()" onreset="resetForm()">
             <div>
                 <h1>Employee Payroll Form</h1>
             </div>
@@ -44,13 +44,13 @@
                     Profile Pic:
                 </label>
                 <label style="display: flex;" class="photo">
-                    <input type="radio" name="profile" class="radio">
-                    <img src="/__MACOSX/assets/profile-images/._Ellipse 1.png">
-                    <input type="radio" name="profile" class="radio">
+                    <input type="radio" name="profile" class="radio" value="/__MACOSX/assets/profile-images/_Ellipse 1.png">
+                    <img src="/__MACOSX/assets/profile-images/_Ellipse 1.png">
+                    <input type="radio" name="profile" class="radio" value="/payroll/assets/profile-images/Ellipse -3.png">
                     <img src="/payroll/assets/profile-images/Ellipse -3.png">
-                    <input type="radio" name="profile" class="radio">
+                    <input type="radio" name="profile" class="radio" value="/payroll/assets/profile-images/Ellipse -8.png">
                     <img src="/payroll/assets/profile-images/Ellipse -8.png">
-                    <input type="radio" name="profile" class="radio">
+                    <input type="radio" name="profile" class="radio" value="/payroll/assets/profile-images/Ellipse -9.png">
                     <img src="/payroll/assets/profile-images/Ellipse -9.png">
                 </label>
             </div>
@@ -59,9 +59,9 @@
                     Gender:
                 </label>
                 <label>
-                    <input type="radio" name="gender">
+                    <input type="radio" name="gender" value="M">
                     Male
-                    <input type="radio" name="gender">
+                    <input type="radio" name="gender" value="F">
                     Female
                 </label>
             </div>
@@ -148,10 +148,10 @@
                 </label>
             </div>
             <div class="form-content">
-                <label for="salary">
+                <label for="notes">
                     Notes:
                 </label>
-                <textarea style="height:100px;width:60%;">
+                <textarea style="height:100px;width:60%;" id="notes">
 
                 </textarea>
             </div>
@@ -169,29 +169,62 @@
 
 </html>
 <script>
-    window.addEventListener('DOMContentLoaded',(event)=>{
-    const name=document.querySelector("#name");
-    const error=document.querySelector('.error-output');
-    name.addEventListener('input',function(){
+    
 
-        if(name.value.length==0)
-        {
-            error.textContent='';
-            return;
-        }
+    const save=()=>{
         try
         {
-            new EmployeePayrollData().name=name.value;
-            error.textContent='';
+            let EmployeePayrollData=createEmployeePayroll();
+            
         }catch(e)
         {
-            error.textContent=e;
+            return
         }
+    }
+
+ const createEmployeePayroll=()=>
+ {
+
+     let employeePayrollData=new EmployeePayrollData();
+     try
+     {
+         employeePayrollData.name=getInputValue('#name');
+         employeePayrollData.profilePic=getSelectedvalues('[name=profile]').pop();
+         employeePayrollData.gender=getSelectedvalues('[name=gender]');
+         employeePayrollData.department=getSelectedvalues('[id=department]');
+         employeePayrollData.salary=getInputValue('#salary');
+         employeePayrollData.employeeNotes=getInputValue('#notes');
+         let date=getInputValue('#day')+' '+
+         getInputValue('#month')+' '+getInputValue('#year');
+         employeePayrollData.startDate=Date.parse(date);
+         alert(employeePayrollData.startDate);
+         alert(employeePayrollData.toString());
+        
+     }catch(e)
+     {
+        //alert(e);
+        throw e;
+     }
+    
+ }
+
+const getInputValue=(id)=>
+{
+    let value=document.querySelector(id).value;
+    return value;
+}
+const getSelectedvalues=(propertyValue)=>
+{
+    alert("inside");
+    let allItems=document.querySelectorAll(propertyValue);
+    let selectedValues=[];
+    allItems.forEach(item=>{
+        if(item.checked)
+        {
+            selectedValues.push(item.value);
+        }
+       
     })
-    const salary=document.querySelector("#salary");
-        const range=document.querySelector(".salary");
-        salary.addEventListener('input',function(){
-            range.innerText=salary.value;
-        }) 
-    })
+    return selectedValues;
+}
 </script>
