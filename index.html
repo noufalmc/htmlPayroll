@@ -9,9 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/css/style.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100&family=Roboto+Serif:ital,wght@1,100&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300,400;500,600;1,100&family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
     <script src='/js/payroll.js'></script>
 </head>
 
@@ -45,17 +43,17 @@
                 </label>
                 <label style="display: flex;" class="photo">
                     <input type="radio" name="profile" class="radio"
-                        value="/__MACOSX/assets/profile-images/_Ellipse 1.png">
-                    <img src="/__MACOSX/assets/profile-images/_Ellipse 1.png">
+                        value="/images/Ellipse 1.png">
+                    <img src="/images/Ellipse -1.png">
                     <input type="radio" name="profile" class="radio"
-                        value="/payroll/assets/profile-images/Ellipse -3.png">
-                    <img src="/payroll/assets/profile-images/Ellipse -3.png">
+                        value="/__MACOSX/">
+                    <img src="/images/Ellipse -3.png">
                     <input type="radio" name="profile" class="radio"
-                        value="/payroll/assets/profile-images/Ellipse -8.png">
-                    <img src="/payroll/assets/profile-images/Ellipse -8.png">
+                        value="/images/Ellipse -8.png">
+                    <img src="/images/Ellipse -8.png">
                     <input type="radio" name="profile" class="radio"
-                        value="/payroll/assets/profile-images/Ellipse -9.png">
-                    <img src="/payroll/assets/profile-images/Ellipse -9.png">
+                        value="/images/Ellipse -9.png">
+                    <img src="/images/Ellipse -9.png">
                 </label>
             </div>
             <div class="form-content">
@@ -85,12 +83,12 @@
                 <label for="salary">
                     Salary:
                 </label>
-                <label>
+                <div style="width: 200%;">
                     <input name="salary" id="salary" value="300000" value="400000" max="500000" type="range" step="100"
-                        id="salary" style="width: 78%;">
+                        id="salary" style="width: 63%;">
                     <salary class="salary">400000</salary>
                     <salary id="salary-result"></salary>
-                </label>
+                </div>
             </div>
             <div class="form-content">
                 <label for="salary">
@@ -207,19 +205,16 @@
         }
     }
 
-    function createAndUpdateJson(data)
-    {
-        let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayroll"));
-        if(employeePayrollList!=undefined)
-        {
+    function createAndUpdateJson(data) {
+        let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayroll"));
+        if (employeePayrollList != undefined) {
             employeePayrollList.push(data);
         }
-        else
-        {
-            employeePayrollList=[data]
+        else {
+            employeePayrollList = [data]
         }
-        
-        localStorage.setItem("EmployeePayroll",JSON.stringify(employeePayrollList));
+
+        localStorage.setItem("EmployeePayroll", JSON.stringify(employeePayrollList));
         alert(localStorage.getItem("EmployeePayroll"));
     }
 
@@ -261,27 +256,24 @@
         })
         return selectedValues;
     }
-    const resetForm=()=>
-    {
-        unsetvalue('#name','');
+    const resetForm = () => {
+        unsetvalue('#name', '');
         unsetGroupInput('[name=profile]');
         unsetGroupInput('[name=gender]');
         unsetGroupInput('[id=department]');
-        unsetvalue('#salary','');
-        unsetvalue('#notes','');
-        unsetvalue('#day','');
-        unsetvalue('#month','');
-        unsetvalue('#year','');
+        unsetvalue('#salary', '');
+        unsetvalue('#notes', '');
+        unsetvalue('#day', '');
+        unsetvalue('#month', '');
+        unsetvalue('#year', '');
     }
-    const unsetGroupInput=(value)=>
-    {
-        let items=document.querySelectorAll(value);
-        allItems.forEach(item=>{
-            item.checked=false
+    const unsetGroupInput = (value) => {
+        let items = document.querySelectorAll(value);
+        allItems.forEach(item => {
+            item.checked = false
         })
     }
-    const unsetvalue=(id,value)=>
-    {
-        document.querySelector(id).value=value;
+    const unsetvalue = (id, value) => {
+        document.querySelector(id).value = value;
     }
 </script>
